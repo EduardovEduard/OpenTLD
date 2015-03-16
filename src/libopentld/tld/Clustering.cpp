@@ -75,11 +75,10 @@ void Clustering::calcMeanRect(std::vector<int> * indices)
 
     Rect *rect = new Rect();
     detectionResult->detectorBB = rect;
-    rect->x = floor(x + 0.5);
-    rect->y = floor(y + 0.5);
-    rect->width = floor(w + 0.5);
-    rect->height = floor(h + 0.5);
-
+    rect->x = static_cast<int>(floor(x + 0.5));
+    rect->y = static_cast<int>(floor(y + 0.5));
+    rect->width = static_cast<int>(floor(w + 0.5));
+    rect->height = static_cast<int>(floor(h + 0.5));
 }
 
 //distances must be of size n*(n+1)/2
