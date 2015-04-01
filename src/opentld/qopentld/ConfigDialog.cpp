@@ -85,8 +85,7 @@ void ConfigDialog::on_comboBox_method_activated(QString element)
 
 void ConfigDialog::on_pushButton_imagePath_clicked()
 {
-    QString file = QFileDialog::getOpenFileName(this, tr("Select input file"),
-                   QDir::currentPath());
+    QString file = QFileDialog::getExistingDirectory(this, tr("Select directory"), QDir::currentPath());
     ui->lineEdit_imagePath->setText(file);
 }
 

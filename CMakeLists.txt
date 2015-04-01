@@ -42,12 +42,12 @@ set(TLD_VERSION ${TLD_VERSION_MAJOR}.${TLD_VERSION_MINOR}.${TLD_VERSION_PATCH})
 #------------------------------------------------------------------------------
 #build type
 if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release CACHE STRING
+    set(CMAKE_BUILD_TYPE Debug CACHE STRING
         "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel."
         FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
 
-option(BUILD_QOPENTLD "Build with Qt-config-dialog." OFF)
+option(BUILD_QOPENTLD "Build with Qt-config-dialog." ON)
 option(USE_SYSTEM_LIBS "Use the installed version of libconfig++." OFF)
 option(WITH_OPENMP "Use OpenMP." OFF)
 

@@ -148,8 +148,13 @@ void TLD::selectObject(const Mat &img, Rect *bb)
 void TLD::processImage(const Mat &img)
 {
     storeCurrentData();
-    Mat grey_frame;
-    cvtColor(img, grey_frame, CV_RGB2GRAY);
+
+    Mat grey_frame = img;
+    if (img.channels() == 3 || img.channels() == 4)
+    {
+      cvtColor(img, grey_frame, CV_RGB2GRAY);
+    }
+
     currImg = grey_frame; // Store new image , right after storeCurrentData();
 
     if(trackerEnabled)

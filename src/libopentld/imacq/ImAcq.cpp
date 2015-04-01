@@ -137,12 +137,11 @@ IplImage *imAcqLoadImg(ImAcq *imAcq, char *path)
 
 IplImage *imAcqLoadFrame(ImAcq *imAcq, int fNo)
 {
-    char path[255];
-    sprintf(path, imAcq->imgPath, fNo);
+    std::stringstream ss;
+    ss << imAcq->imgPath << "/" << std::setw(8) << std::setfill('0') << fNo << ".jpg";
+    std::cerr << "Loading: " << ss.str() << std::endl;
 
-    printf("load path %s\n", path);
-
-    return cvLoadImage(path);
+    return cvLoadImage(ss.str().c_str());
 }
 
 IplImage *imAcqLoadCurrentFrame(ImAcq *imAcq)

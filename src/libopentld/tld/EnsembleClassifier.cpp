@@ -223,13 +223,10 @@ void EnsembleClassifier::updatePosterior(int treeIdx, int idx, int positive, int
 
 void EnsembleClassifier::updatePosteriors(int *featureVector, int positive, int amount)
 {
-
     for(int i = 0; i < numTrees; i++)
     {
-
         int idx = featureVector[i];
         updatePosterior(i, idx, positive, amount);
-
     }
 }
 
