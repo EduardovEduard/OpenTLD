@@ -188,7 +188,6 @@ void Main::doWork()
 			{
 				trajectory.drawTrajectory(img);
 			}
-
             CvFont font;
             cvInitFont(&font, CV_FONT_HERSHEY_SIMPLEX, .5, .5, 0, 1, 8);
             cvRectangle(img, cvPoint(0, 0), cvPoint(img->width, 50), black, CV_FILLED, 8, 0);

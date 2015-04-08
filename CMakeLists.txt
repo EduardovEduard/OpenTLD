@@ -28,6 +28,10 @@ cmake_minimum_required(VERSION 2.6)
 
 find_package(OpenCV REQUIRED)
 
+option(BUILD_QOPENTLD "Build with Qt-config-dialog." ON)
+option(USE_SYSTEM_LIBS "Use the installed version of libconfig++." OFF)
+option(WITH_OPENMP "Use OpenMP." OFF)
+
 if(BUILD_QOPENTLD)
     find_package(Qt4 REQUIRED)
 endif(BUILD_QOPENTLD)
@@ -46,10 +50,6 @@ if(NOT CMAKE_BUILD_TYPE)
         "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel."
         FORCE)
 endif(NOT CMAKE_BUILD_TYPE)
-
-option(BUILD_QOPENTLD "Build with Qt-config-dialog." ON)
-option(USE_SYSTEM_LIBS "Use the installed version of libconfig++." OFF)
-option(WITH_OPENMP "Use OpenMP." OFF)
 
 if(WITH_OPENMP)
 	find_package(OpenMP REQUIRED)
