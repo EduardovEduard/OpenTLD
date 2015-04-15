@@ -50,9 +50,9 @@ public:
     int numScales;
     cv::Size *scales;
 
+    float *features;
     int *windowOffsets;
     int *featureOffsets;
-    float *features;
 
     int numIndices;
 

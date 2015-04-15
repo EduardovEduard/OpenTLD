@@ -126,7 +126,7 @@ int getBBFromUser(IplImage *img, CvRect &rect, Gui *gui)
             return PROGRAM_EXIT;
         }
 
-        if(((key == '\n') || (key == '\r') || (key == '\r\n')) && (bb->x != -1) && (bb->y != -1))
+        if(((key == '\n') || (key == '\r')) && (bb->x != -1) && (bb->y != -1))
         {
             correctBB = true;
         }

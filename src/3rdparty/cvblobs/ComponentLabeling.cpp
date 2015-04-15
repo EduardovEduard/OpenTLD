@@ -100,7 +100,7 @@ bool ComponentLabeling(	IplImage* inputImage,
 	bool *visitedPoints, *pVisitedPoints, internalContour, externalContour;
 	unsigned char *pInputImage, *pMask, *pAboveInputImage, *pBelowInputImage,
 				  *pAboveMask, *pBelowMask;
-	int imageWidth, imageHeight, currentLabel, contourLabel;
+	int imageWidth = 0, imageHeight = 0, currentLabel = 0, contourLabel = 0;
 	// row major vector with labelled image 
 	t_labelType *labelledImage, *pLabels;
 	//! current blob pointer

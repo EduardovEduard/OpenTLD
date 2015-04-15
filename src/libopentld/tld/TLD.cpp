@@ -445,8 +445,6 @@ void TLD::writeToFile(const char *path)
     fprintf(file, "%f #min_var\n", detectorCascade->varianceFilter->minVar);
     fprintf(file, "%d #Positive Sample Size\n", nn->truePositives->size());
 
-
-
     for(size_t s = 0; s < nn->truePositives->size(); s++)
     {
         float *imageData = nn->truePositives->at(s).values;

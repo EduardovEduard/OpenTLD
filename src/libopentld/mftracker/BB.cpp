@@ -47,11 +47,11 @@ int getFilledBBPoints(float *bb, int numM, int numN, int margin, float *pts)
     /**
      * gap between points in width direction
      */
-    float divN;
+    float divN = 0;
     /**
      * gap between points in height direction
      */
-    float divM;
+    float divM = 0;
     float bb_local[4];
     float center[2];
     float spaceN;
