@@ -162,7 +162,7 @@ IplImage *imAcqGetImgByCurrentTime(ImAcq *imAcq)
     float secondsPassed = (cvGetTickCount() - imAcq->startTime) / cvGetTickFrequency();
     secondsPassed = secondsPassed / 1000000;
 
-    int framesPassed = secondsPassed * imAcq->fps;
+    int framesPassed = static_cast<int>(secondsPassed * imAcq->fps);
 
     int currentFrame = imAcq->startFrame + framesPassed;
 
