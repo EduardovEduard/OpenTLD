@@ -27,6 +27,7 @@ project(OpenTLD)
 cmake_minimum_required(VERSION 2.6)
 
 find_package(OpenCV REQUIRED)
+find_package(Boost COMPONENTS system thread REQUIRED)
 
 option(BUILD_QOPENTLD "Build with Qt-config-dialog." ON)
 option(USE_SYSTEM_LIBS "Use the installed version of libconfig++." OFF)

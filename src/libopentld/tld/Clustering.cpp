@@ -29,6 +29,8 @@
 #include "TLDUtil.h"
 #include "DetectorCascade.h"
 
+#include <boost/thread/thread.hpp>
+
 using namespace cv;
 
 namespace tld
@@ -86,12 +88,18 @@ void Clustering::calcDistances(float *distances)
 {
     float *distances_tmp = distances;
 
+    // TODO list!
     std::vector<int> confidentIndices = *detectionResult->confidentIndices;
 
     size_t indices_size = confidentIndices.size();
 
     for(size_t i = 0; i < confidentIndices.size(); i++)
     {
+        if (i % 100 == 0)
+        {
+          boost::this_thread::interruption_point();
+        }
+
         int firstIndex = confidentIndices.at(0);
         confidentIndices.erase(confidentIndices.begin());
         tldOverlapOne(windows, numWindows, firstIndex, &confidentIndices, distances_tmp);
@@ -155,8 +163,11 @@ void Clustering::cluster(float *distances, int *clusterIndices)
 
     int numClusters = 0;
 
+    long long innerIterations = 0;
     while(true)
     {
+        //Interruption point for frames stuck in this loop;
+        boost::this_thread::interruption_point();
 
         //Search for the shortest distance
         float shortestDist = -1;
@@ -169,13 +180,13 @@ void Clustering::cluster(float *distances, int *clusterIndices)
         {
             for(int j = i + 1; j < numConfidentIndices; j++) //Start from i+1
             {
-
                 if(!distUsed[distIndex] && (shortestDistIndex == -1 || distances[distIndex] < shortestDist))
                 {
                     shortestDist = distances[distIndex];
                     shortestDistIndex = distIndex;
                     i1 = i;
                     i2 = j;
+                    innerIterations++;
                 }
 
                 distIndex++;
